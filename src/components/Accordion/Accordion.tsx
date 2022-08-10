@@ -14,7 +14,7 @@ function Accordion(props: AccordionPropsType) {
                 <AccordionBody/>
             </div>
         )
-    } else return (
+    } return (
         <div>
             <AccordionTitle title={props.titleValue}/>
         </div>
