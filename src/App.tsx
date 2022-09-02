@@ -9,7 +9,7 @@ import {UncontrolledRating} from "./components/Rating/UncontrolledRating";
 function App() {
     console.log('App')
     return (
-        <div>
+        <div className="App">
             <OnOff />
             <OnOff />
             <OnOff />
