@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import './App.css';
-import Accordion from "./components/Accordion/Accordion";
+import {Accordion} from "./components/Accordion/Accordion";
 import {Rating, RatingValueType} from "./components/Rating/Rating";
-import UncontrolledOnOff from "./components/OnOff/UncontrolledOnOff";
-import UncontrolledAccordion from "./components/Accordion/UncontrolledAccordion";
-import {UncontrolledRating} from "./components/Rating/UncontrolledRating";
+import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
+import {UncontrolledAccordion} from "./components/UncontrolledAccordion/UncontrolledAccordion";
+import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
 import On from "./components/OnOff/On/On";
 import Off from "./components/OnOff/Off/Off";
 import Indicator from "./components/OnOff/Indicator/Indicator";
+import {OnOff} from "./components/OnOff/OnOff";
 
 function App() {
     console.log('App')
@@ -23,27 +24,19 @@ function App() {
             <UncontrolledOnOff/>
 
             <hr/>
-            <div>
-                <On status={on} setOn={setOn}/>
-                <Off status={on} setOn={setOn}/>
-                <Indicator status={on}/>
-            </div>
-            <div>
-                <On status={on} setOn={setOn}/>
-                <Off status={on} setOn={setOn}/>
-                <Indicator status={on}/>
-            </div>
+            <OnOff status={on} setOn={setOn}/>
+            <hr/>
             <div>
                 <On status={on} setOn={setOn}/>
                 <Off status={on} setOn={setOn}/>
                 <Indicator status={on}/>
             </div>
 
-            <UncontrolledAccordion titleValue={'Menu'} />
-            <UncontrolledRating />
+            <UncontrolledAccordion titleValue={'Menu'}/>
+            <UncontrolledRating/>
 
-            <UncontrolledAccordion titleValue={'Users'} />
-            <UncontrolledRating />
+            <UncontrolledAccordion titleValue={'Users'}/>
+            <UncontrolledRating/>
 
 
             <PageTittle title={'This is AP component'}/>

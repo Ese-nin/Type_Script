@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const UncontrolledOnOff = () => {
+export const UncontrolledOnOff = () => {
 
     const [on, setOn] = useState(false);
 
@@ -40,4 +40,3 @@ const UncontrolledOnOff = () => {
     );
 };
 
-export default UncontrolledOnOff;
