@@ -1,8 +1,15 @@
 import React from 'react';
 
-type AccordionPropsType = {
+export type AccordionPropsType = {
+    /**
+     * param that showed name of element
+     */
     titleValue: string;
     collapsed: boolean;
+    /**
+     * callback that called when any element clicked
+     * @param value boolean
+     */
     onClick: (value: boolean) => void
 }
 

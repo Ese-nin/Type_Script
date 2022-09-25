@@ -19,9 +19,9 @@ function App() {
 
     return (
         <div className="App">
-            <UncontrolledOnOff/>
-            <UncontrolledOnOff/>
-            <UncontrolledOnOff/>
+            <UncontrolledOnOff onChange={setOn}/>
+            <UncontrolledOnOff defaultOn={true} onChange={setOn}/>
+            <UncontrolledOnOff onChange={setOn}/>
 
             <hr/>
             <OnOff status={on} setOn={setOn}/>
@@ -33,10 +33,10 @@ function App() {
             </div>
 
             <UncontrolledAccordion titleValue={'Menu'}/>
-            <UncontrolledRating/>
+            <UncontrolledRating defaultValue={2} onChange={()=>{}}/>
 
             <UncontrolledAccordion titleValue={'Users'}/>
-            <UncontrolledRating/>
+            <UncontrolledRating defaultValue={4} onChange={()=>{}}/>
 
 
             <PageTittle title={'This is AP component'}/>

@@ -1,8 +1,13 @@
 import React, {useState} from 'react';
 
-export const UncontrolledOnOff = () => {
+type PropsType = {
+    onChange: (on: boolean)=>void
+    defaultOn?: boolean
+}
 
-    const [on, setOn] = useState(false);
+export const UncontrolledOnOff = (props: PropsType) => {
+
+    const [on, setOn] = useState(props.defaultOn ? props.defaultOn : false);
 
     const onStyle = {
         width: "30px",
@@ -31,11 +36,14 @@ export const UncontrolledOnOff = () => {
         backgroundColor: on ? "green" : "red"
     };
 
+    const status = on ? "true" : "false"
+
     return (
         <div>
             <div style={onStyle} onClick={()=>setOn(true)}>On</div>
             <div style={offStyle} onClick={()=>setOn(false)}>Off</div>
             <div style={indicatorStyle}></div>
+            <div>{status}</div>
         </div>
     );
 };
