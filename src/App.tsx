@@ -33,10 +33,12 @@ function App() {
             </div>
 
             <UncontrolledAccordion titleValue={'Menu'}/>
-            <UncontrolledRating defaultValue={2} onChange={()=>{}}/>
+            <UncontrolledRating defaultValue={2} onChange={() => {
+            }}/>
 
             <UncontrolledAccordion titleValue={'Users'}/>
-            <UncontrolledRating defaultValue={4} onChange={()=>{}}/>
+            <UncontrolledRating defaultValue={4} onChange={() => {
+            }}/>
 
 
             <PageTittle title={'This is AP component'}/>

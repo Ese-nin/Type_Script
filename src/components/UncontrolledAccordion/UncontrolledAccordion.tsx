@@ -1,11 +1,13 @@
-import React, {useReducer, useState} from 'react';
+import React, {useReducer} from 'react';
 import {reducer, TOGGLE_COLLAPSED} from "./reducer";
 
 type AccordionPropsType = {
     titleValue: string
 }
 
-export function UncontrolledAccordion(props: AccordionPropsType) {
+export const UncontrolledAccordion = React.memo(UncontrolledAccordionMemo)
+
+function UncontrolledAccordionMemo(props: AccordionPropsType) {
     console.log("Accordion rendering")
 
     /*const [collapsed, setCollapsed] = useState(true);*/
@@ -27,7 +29,9 @@ type AccordionTitlePropsType = {
     collapsed: boolean
 }
 
-function AccordionTitle(props: AccordionTitlePropsType) {
+const AccordionTitle = React.memo(AccordionTitleMemo)
+
+function AccordionTitleMemo(props: AccordionTitlePropsType) {
     console.log("AccordionTitle rendering")
 
     const onClickHandler = () => {
@@ -42,7 +46,9 @@ function AccordionTitle(props: AccordionTitlePropsType) {
 
 }
 
-function AccordionBody(props: any) {
+const AccordionBody = React.memo(AccordionBodyMemo)
+
+function AccordionBodyMemo(props: any) {
     console.log("AccordionBody rendering")
     return (
         <div>

@@ -5,7 +5,7 @@ type PropsType = {
     defaultOn?: boolean
 }
 
-export const UncontrolledOnOff = (props: PropsType) => {
+const UncontrolledOnOffMemo = (props: PropsType) => {
 
     const [on, setOn] = useState(props.defaultOn ? props.defaultOn : false);
 
@@ -48,3 +48,4 @@ export const UncontrolledOnOff = (props: PropsType) => {
     );
 };
 
+export const UncontrolledOnOff = React.memo(UncontrolledOnOffMemo)
