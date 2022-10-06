@@ -5,47 +5,28 @@
 .checkbox {
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 2px;
-    width: 10px;
-    height: 10px;
+    width: 11px;
+    height: 11px;
     margin: 4px 4px;
 }
 
 .clickedCheckbox {
     background: rgba(0, 0, 255, 0.5);
-    border-radius: 2px;
-    width: 12px;
-    height: 12px;
-    margin: 4px 4px;
+    border: 1px solid rgba(0, 0, 255, 0.5);
 }
 
 .checkbox:hover {
-    border: 1px solid rgba(0, 0, 0, 0.7);
-    border-radius: 2px;
-    width: 10px;
-    height: 10px;
-    margin: 4px 4px;
+    border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
 .checkbox:active {
     border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 2px;
-    width: 10px;
-    height: 10px;
-    margin: 4px 4px;
 }
 
 .clickedCheckbox:hover {
-    background: rgba(0, 0, 255, 0.7);
-    border-radius: 2px;
-    width: 12px;
-    height: 12px;
-    margin: 4px 4px;
+    background: rgba(0, 0, 255, 0.8);
 }
 
 .clickedCheckbox:active {
     background: rgba(0, 0, 255, 0.5);
-    border-radius: 2px;
-    width: 12px;
-    height: 12px;
-    margin: 4px 4px;
 }

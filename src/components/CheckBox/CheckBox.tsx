@@ -9,7 +9,8 @@ export const CheckBox = () => {
         setChecked(!checked)
     }
 
-    const finalClassName = checked ? s.clickedCheckbox : s.checkbox
+    const finalClassName = s.checkbox
+    + (checked ? " " + s.clickedCheckbox : "")
 
     return (
         <div>
