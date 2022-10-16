@@ -2,8 +2,10 @@ import React, {useState, KeyboardEvent, useEffect} from 'react';
 import s from "./Select.module.css"
 
 type ItemType = {
+    id: number
     title: string
-    value: any
+    country: string
+    citizens: number
 }
 
 export type SelectPropsType = {
@@ -14,15 +16,19 @@ export type SelectPropsType = {
 
 const SelectMemo = (props: SelectPropsType) => {
 
+    console.log("Component is rendered")
+
     const [active, setActive] = useState(false)
     const [hoveredElementItem, setHoveredElementItem] = useState(props.value)
 
-    const currentTitle = props.items.find(el => el.value === props.value)
-    const hoveredItem = props.items.find(el => el.value === hoveredElementItem)
+    const currentTitle = props.items.find(el => el.id === props.value)
+    const hoveredItem = props.items.find(el => el.id === hoveredElementItem)
 
     useEffect(() => {
         setHoveredElementItem(props.value)
     }, [props.value])
+
+
 
     const toggleItems = () => {
         setActive(!active)
@@ -31,23 +37,23 @@ const SelectMemo = (props: SelectPropsType) => {
     const onKeyDown = (e: KeyboardEvent<HTMLHeadingElement>) => {
         if (e.key === "ArrowDown" || e.key === "ArrowUp") {
             for (let i = 0; i < props.items.length; i++) {
-                if (props.items[i].value === hoveredElementItem) {
+                if (props.items[i].id === hoveredElementItem) {
                     if (props.items[i + 1]) {
                         if (e.key === "ArrowDown") {
-                            props.onChange(props.items[i + 1].value);
+                            props.onChange(props.items[i + 1].id);
                             return;
                         }
                     }
                     if (props.items[i - 1]) {
                         if (e.key === "ArrowUp") {
-                            props.onChange(props.items[i - 1].value);
+                            props.onChange(props.items[i - 1].id);
                             return;
                         }
                     }
                 }
             }
             if (!currentTitle) {
-                props.onChange(props.items[0].value)
+                props.onChange(props.items[0].id)
             }
         }
 
@@ -65,10 +71,10 @@ const SelectMemo = (props: SelectPropsType) => {
             <div className={s.items}>
                 {active && props.items.map((el, index) =>
                     <div
-                        onMouseEnter={() => setHoveredElementItem(el.value)}
+                        onMouseEnter={() => setHoveredElementItem(el.id)}
                         className={s.item + " " + (hoveredItem === el ? s.selected : "")}
                         onClick={() => {
-                            props.onChange(el.value);
+                            props.onChange(el.id);
                             setActive(false)
                         }}
                         key={index}>{el.title}</div>)}

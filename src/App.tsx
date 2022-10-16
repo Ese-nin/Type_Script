@@ -45,12 +45,18 @@ function App() {
             <PageTittle title={'My friends'}/>
             Article 1
             <Rating value={ratingValue} onClick={setRatingValue}/>
-            <Accordion titleValue={'Menu'}
-                       collapsed={accordionCollapsed}
-                       onClick={setAccordionCollapsed}/>
-            <Accordion titleValue={'Users'}
-                       collapsed={accordionCollapsed}
-                       onClick={setAccordionCollapsed}/>
+            <Accordion
+                onChange={() => {}}
+                items={[]}
+                titleValue={'Menu'}
+                collapsed={accordionCollapsed}
+                onClick={setAccordionCollapsed}/>
+            <Accordion
+                onChange={() => {}}
+                items={[]}
+                titleValue={'Users'}
+                collapsed={accordionCollapsed}
+                onClick={setAccordionCollapsed}/>
             Article 2
             <Rating value={ratingValue} onClick={setRatingValue}/>
         </div>
