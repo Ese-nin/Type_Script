@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from "react"
+import React, {useCallback, useMemo, useState} from "react"
 
 export default {
     title: "useMemo"
@@ -72,3 +72,42 @@ export const DifficultCountingExample = () => {
         </>
 
     }
+
+
+export const LikeUseCallback = () => {
+    console.log("LikeUseCallback")
+    const [count, setCount] = useState(0)
+    const [books, setBooks] = useState(["React", "CSS", "HTML", "JS"])
+
+    const newArray = useMemo(() =>{
+        return books.filter(el => el.includes("a"))
+    }, [books])
+
+    /*const addBook = () => {
+        setBooks(["Angular" + new Date().getTime(), ...books])
+    }
+
+    const memoAddBook = useMemo(()=>{
+        return addBook
+    }, [books])*/
+
+    const memoAddBook2 = useCallback(()=>{
+        setBooks(["Angular" + new Date().getTime(), ...books])
+    }, [books])
+
+    return <>
+        <button onClick={() => setCount(count + 1)}>+</button>
+        {count}
+        <Books books={newArray} addBook={memoAddBook2}/>
+    </>
+
+}
+
+const BooksSecret = (props: { books: Array<string>; addBook: ()=>void }) => {
+    console.log("Books")
+    return <div>
+        <button onClick={()=>{props.addBook()}}>add book</button>
+        {props.books.map((b, i) => <div key={i}>{b}</div>)}
+    </div>
+}
+const Books = React.memo(BooksSecret)
