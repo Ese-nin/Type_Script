@@ -106,7 +106,7 @@ export const LikeUseCallback = () => {
 const BooksSecret = (props: { books: Array<string>; addBook: ()=>void }) => {
     console.log("Books")
     return <div>
-        <button onClick={()=>{props.addBook()}}>add book</button>
+        <button onClick={()=>props.addBook()}>add book</button>
         {props.books.map((b, i) => <div key={i}>{b}</div>)}
     </div>
 }
