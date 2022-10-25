@@ -1,0 +1,88 @@
+import React, {useEffect, useState} from "react";
+import s from './clock.module.css'
+
+const setTimeForHuman = (num: number) => {
+    return num < 10 ? '0' + num : num
+}
+
+type ClockPropsType = {
+    type: 'digital' | 'analog'
+}
+
+export const Clock = (props: ClockPropsType) => {
+
+    let clock;
+    if (props.type === 'analog') clock = <AnalogClock/>
+    if (props.type === 'digital') clock = <DigitalClock/>
+
+    return <>
+        {clock}
+    </>
+
+}
+
+const AnalogClock = () => {
+
+    // оформление и логику - своровал и адаптировал
+
+    const [date, setDate] = useState(new Date())
+
+    const deg = 6;
+
+    let hh = date.getHours() * 30;
+    let mm = date.getMinutes() * deg;
+    let ss = date.getSeconds() * deg;
+
+    useEffect(() => {
+
+        const intervalID = setInterval(() => {
+            setDate(new Date())
+        }, 1000)
+
+        return () => {
+            clearInterval(intervalID)
+        }
+
+    }, [])
+
+    return (
+        <div className={s.clock}>
+            <div className={s.hour}>
+                <div className={s.hr} style={{transform: `rotateZ(${(hh) + (mm / 12)}deg)`}}></div>
+            </div>
+            <div className={s.min}>
+                <div className={s.mn} style={{transform: `rotateZ(${mm}deg)`}}></div>
+            </div>
+            <div className={s.sec}>
+                <div className={s.sc} style={{transform: `rotateZ(${ss}deg)`}}></div>
+            </div>
+        </div>
+    )
+}
+
+
+const DigitalClock = () => {
+
+    const [date, setDate] = useState(new Date())
+
+    let hours = setTimeForHuman(date.getHours())
+    let minutes = setTimeForHuman(date.getMinutes())
+    let seconds = setTimeForHuman(date.getSeconds())
+
+
+    useEffect(() => {
+
+        const intervalID = setInterval(() => {
+            setDate(new Date())
+        }, 1000)
+
+        return () => {
+            clearInterval(intervalID)
+        }
+
+    }, [])
+
+    return <>
+        clock: {hours}:{minutes}:{seconds}
+    </>
+}

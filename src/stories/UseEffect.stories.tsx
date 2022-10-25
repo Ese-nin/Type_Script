@@ -59,34 +59,3 @@ export const SetTimeoutExample = () => {
     </>
 
 }
-
-
-export const ClockExample = () => {
-    console.log("ClockExample")
-    const [date, setDate] = useState(new Date())
-
-    const setTimeForHuman = (num: number) => {
-       return  num < 10 ? '0' + num : num
-    }
-
-    let hours = setTimeForHuman(date.getHours())
-    let minutes = setTimeForHuman(date.getMinutes())
-    let seconds = setTimeForHuman(date.getSeconds())
-
-
-    useEffect(() => {
-
-        setInterval(() => {
-            setDate(new Date())
-        }, 1000)
-
-    }, [])
-
-
-    return <>
-        clock: {hours}:{minutes}:{seconds}
-        <br/>
-
-    </>
-
-}
