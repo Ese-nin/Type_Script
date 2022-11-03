@@ -32,7 +32,6 @@ export const Clock = (props: ClockPropsType) => {
     return <>
         {clock}
     </>
-
 }
 
 type ClockViewPropsType = {
