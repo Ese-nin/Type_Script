@@ -11,27 +11,7 @@ type ClockPropsType = {
 
 export const Clock = (props: ClockPropsType) => {
 
-    let clock;
-    if (props.type === 'analog') clock = <AnalogClock/>
-    if (props.type === 'digital') clock = <DigitalClock/>
-
-    return <>
-        {clock}
-    </>
-
-}
-
-const AnalogClock = () => {
-
-    // оформление и логику - своровал и адаптировал
-
     const [date, setDate] = useState(new Date())
-
-    const deg = 6;
-
-    let hh = date.getHours() * 30;
-    let mm = date.getMinutes() * deg;
-    let ss = date.getSeconds() * deg;
 
     useEffect(() => {
 
@@ -44,6 +24,30 @@ const AnalogClock = () => {
         }
 
     }, [])
+
+    let clock;
+    if (props.type === 'analog') clock = <AnalogClock date={date}/>
+    if (props.type === 'digital') clock = <DigitalClock date={date}/>
+
+    return <>
+        {clock}
+    </>
+
+}
+
+type ClockViewPropsType = {
+    date: Date
+}
+
+const AnalogClock: React.FC<ClockViewPropsType> = ({date}) => {
+
+    // оформление - своровал и адаптировал
+
+    const deg = 6;
+
+    let hh = date.getHours() * 30;
+    let mm = date.getMinutes() * deg;
+    let ss = date.getSeconds() * deg;
 
     return (
         <div className={s.clock}>
@@ -61,26 +65,11 @@ const AnalogClock = () => {
 }
 
 
-const DigitalClock = () => {
-
-    const [date, setDate] = useState(new Date())
+const DigitalClock: React.FC<ClockViewPropsType> = ({date}) => {
 
     let hours = setTimeForHuman(date.getHours())
     let minutes = setTimeForHuman(date.getMinutes())
     let seconds = setTimeForHuman(date.getSeconds())
-
-
-    useEffect(() => {
-
-        const intervalID = setInterval(() => {
-            setDate(new Date())
-        }, 1000)
-
-        return () => {
-            clearInterval(intervalID)
-        }
-
-    }, [])
 
     return <>
         clock: {hours}:{minutes}:{seconds}
