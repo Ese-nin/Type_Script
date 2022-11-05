@@ -35,19 +35,22 @@ export const Example = () => {
 }
 
 
-export const SetTimeoutExample = () => {
+export const SetIntervalExample = () => {
     console.log("SetTimeoutExample")
     const [count, setCount] = useState(0)
     const [fake, setFake] = useState(0)
 
     useEffect(() => {
 
-        setInterval(() => {
-            console.log('tick: ' + count)
+        let id = setInterval(() => {
             setCount(state => state + 1)
+            console.log('tick: ' + count)
         }, 1000)
 
-    }, [])
+        return () => {
+            clearInterval(id)
+        }
+    }, [count])
 
 
     return <>
@@ -58,4 +61,75 @@ export const SetTimeoutExample = () => {
         fake: {fake}
     </>
 
+}
+
+
+export const ResetUseEffectExample = () => {
+    const [count, setCount] = useState(0)
+    console.log("ResetUseEffectExample " + count)
+
+    useEffect(() => {
+
+        console.log('Effect occurred: ' + count)
+
+        return () => {
+            console.log('reset effect' + count)
+        }
+    }, [count])
+
+    const increase = () => setCount(state => state + 1)
+
+    return <>
+        <button onClick={increase}>count +</button>
+        count: {count}
+    </>
+
+}
+
+
+export const KeyPressExample = () => {
+    const [text, setText] = useState('')
+    console.log("ResetUseEffectExample " + text)
+
+    useEffect(() => {
+
+        const listener = (e: KeyboardEvent) => {
+            console.log(e.key)
+            setText(text + e.key)
+        }
+
+        window.addEventListener('keypress', listener)
+
+        return () => {
+            window.removeEventListener('keypress', listener)
+        }
+    }, [text])
+
+
+    return <>
+        Current text: {text}
+    </>
+}
+
+
+export const SetTimeoutExample = () => {
+    const [text, setText] = useState('')
+
+    useEffect(() => {
+
+        const id = setTimeout(() => {
+            console.log('Timeout passed')
+            setText('The time has gone')
+        }, 3000)
+
+        return () => {
+            clearTimeout(id)
+        }
+
+    }, [])
+
+
+    return <>
+        Your text: {text}
+    </>
 }
